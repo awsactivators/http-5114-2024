@@ -54,7 +54,7 @@ Workshop in Web Development Course
   Stop, start, and continue survey
   Monty Hall
 
-**Module 9 - Coding from Scratch - Accordion**
+- **Module 9 - Coding from Scratch - Accordion**
   Code a JavaScript Slideshow from Scratch
 
 - **Module 10 - Monty Hall**
