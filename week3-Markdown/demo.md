@@ -61,3 +61,15 @@ function test() {
 
 > [!Note]  
 > This is a note!
+
+> [!Tip]  
+This is a Tip
+
+> [!IMPORTANT]  
+This is an Important note
+
+> [!WARNING]  
+This is a warning!
+
+> [!CAUTION]  
+This is a caution!
