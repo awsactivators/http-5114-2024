@@ -30,3 +30,7 @@ This is an unordered list:
 ## Links
 
 This is a link to [my portfolio](https://awsactivators.github.io)
+
+## Images
+
+![Web Dev](web-dev.jpg)
