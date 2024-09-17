@@ -34,3 +34,17 @@ This is a link to [my portfolio](https://awsactivators.github.io)
 ## Images
 
 ![Web Dev](web-dev.jpg)
+
+## Code
+
+We can put inline code
+
+To add an image use an `<img>` tag.
+
+You can add multi-line code by using three tics and the name of the coding language.
+
+```js
+function test() {
+  console.log("test");
+}
+```
