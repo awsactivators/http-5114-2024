@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Form</title>
+    <style>
+      .error {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <form>
+      <label for="name">Name:</label>
+      <br />
+      <input type="text" name="name" id="name" />
+      <div id="name-error" class="error"></div>
+
+      <button id="submit">Submit</button>
+    </form>
+
+    <div id="message"></div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
