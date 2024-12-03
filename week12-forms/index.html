@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Form</title>
+  <style>
+
+    #form-container {
+      width: 400px;
+      background-color: bisque;
+      padding: 30px ;
+      box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+      transition: 0.3s;
+      margin-bottom: 30px;
+      border-radius: 25px;
+    }
+    .input-form {
+      display: flex;
+      flex-direction: column;
+      margin: 20px;
+      row-gap: 30px;
+    }
+
+    .input-form input {
+      padding: 10px;
+      border-radius: 10px;
+      border: 2px solid purple;
+      width: 300px;
+    }
+
+    #message {
+      padding: 10px;
+      border-radius: 10px;
+      border: 2px solid purple;
+      height: 80px;
+      width: 300px;
+    }
+
+    .submit-btn {
+      margin-left: 20px;
+    }
+
+    #submit {
+      padding: 10px;
+      border-radius: 10px;
+      background-color: coral;
+      border: none;
+      font-weight: bolder;
+    }
+  </style>
+</head>
+<body>
+  <h1>Contact Form</h1>
+  <h2>Get In Touch</h2>
+  <form action="submit.php" method="post" name="myForm">
+    <div id="form-container">
+      <div class="input-form">
+        <input type="text" name="fname" id="fname" placeholder="First Name:">
+        <span id="first-error"></span>
+        <input type="text" name="lname" id="lname" placeholder="Last Name:">
+        <span id="last-error"></span>
+      </div>
+      <div class="input-form">
+        <input type="email" name="email" id="email" placeholder="Email:">
+        <span id="email-error"></span>
+        <textarea name="message" id="message" placeholder="Message:"></textarea>
+        <span id="message-error"></span>
+      </div>
+        <div class="submit-btn">
+          <button type="submit" id="submit">Submit</button>
+        </div>
+    </div>
+    
+  </form>
+
+  <script>
+    window.onload = () => {
+      var fname = document.getElementById("fname");
+      var lname = document.getElementById("lname");
+      var email = document.getElementById("email");
+      var message = document.getElementById("message");
+      var firstError = document.getElementById("first-error");
+      var lastError = document.getElementById("last-error");
+      var emailError = document.getElementById("email-error");
+      var messageError = document.getElementById("message-error");
+      var sumbit = document.getElementById("submit");
+
+
+      submit.addEventListener("click", function(e){
+
+        var errors = 0;
+        var re = /^\S+@\S+\.\S+$/;
+
+        firstError.innerHTML = "";
+        lastError.innerHTML = "";
+        emailError.innerHTML = "";
+        messageError.innerHTML = "";
+
+        if(fname.value === "")
+        {
+          errors++;
+          firstError.innerHTML = "Please enter a first name";
+        }
+
+        if(lname.value === "")
+        {
+          errors++;
+          lastError.innerHTML = "Please enter a last name";
+        }
+
+        if(email.value === "")
+        {
+          errors++;
+          emailError.innerHTML = "Please enter an email address";
+        } else if(!re.test(email.value)) {
+          errors++;
+          emailError.innerHTML = "Please enter a valid email address";
+        }
+
+        if(message.value === "")
+        {
+          errors++;
+          messageError.innerHTML = "Please enter a message";
+        }
+
+        if(errors > 0){
+          e.preventDefault()
+        }
+      });
+    }
+  </script>
+</body>
+</html>
