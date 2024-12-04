@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Async, Await, Promise Demo</title>
+</head>
+<body>
+  <h1>Async, Await, Promise Demo</h1>
+  <div id="insult">
+
+  </div>
+
+  <script>
+    let url = "https://pages.codeadam.ca/smurfs/api/insult";
+    
+    // let response = fetch(url);
+
+    //response.then((data) => {
+    //  console.log(data);
+    //  console.log(data.json());
+   //});
+
+   /* 
+   // Promise
+   fetch(url).then((response) => {
+
+      console.log(response);
+      return response.json();
+
+    }).then((data) => {
+
+      console.log(data);
+      console.log(data.insult);
+
+      let insult = document.getElementById('insult');
+      insult.innerHTML = data.insult;
+    }); */
+
+    // Async, Await
+
+    async function getInsult() {
+      let response = await fetch(url);
+      let data = await response.json();
+      console.log(data);
+      console.log(data.insult);
+
+      let insult = document.getElementById('insult');
+      insult.innerHTML = data.insult;
+    }
+    getInsult();
+
+  </script>
+</body>
+</html>

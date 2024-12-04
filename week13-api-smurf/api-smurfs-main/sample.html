@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Insult a Smurf</title>
+    <style>
+      body {
+        background-color: #fff;
+        margin: 0;
+        padding: 0;
+      }
+      #container {
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+      }
+
+      #loading {
+        font-size: 220px;
+        text-align: center;
+        display: block;
+      }
+      #center {
+        position: relative;
+        color: #000;
+        margin: auto;
+        max-width: 800px;
+        width: 100%;
+        font-family: "Comic Neue", cursive;
+        font-weight: 400;
+        font-style: normal;
+        text-align: center;
+      }
+      #speech {
+        height: 200px;
+        background: url('images/speech.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+      #insult-text {
+        position: relative;
+        top: 30px;
+        width: 200px;
+        height: 100px;
+        margin: auto;
+        vertical-align: middle;
+        font-weight: bold;
+        font-size: 22px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+      #smurf img {
+        cursor: pointer;
+      }
+
+      a:link,
+      a:active,
+      a:hover,
+      a:visited {
+        color: #000;
+        text-decoration: none;
+      }
+
+      #codeadam {
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        font-size: 24px;
+        padding: 15px;
+        z-index: 10000;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      #codeadam img {
+        vertical-align: middle;
+      }
+
+      #docs {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        font-size: 30px;
+        padding: 15px;
+        color: #000;
+    }
+    </style>
+
+    <script
+      src="https://kit.fontawesome.com/57a8a8c892.js"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      href="https://fonts.googleapis.com/css?family=Lora"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=PT+Sans+Narrow"
+      rel="stylesheet"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div id="codeadam">
+      <a href="/"><i class="fas fa-bars"></i></a>
+      &nbsp;
+      <a href="https://github.com/codeadamca/api-smurfs"
+        ><i class="fab fa-github"></i
+      ></a>
+      &nbsp;
+      <a href="https://codeadam.ca"
+        ><img src="https://codeadam.ca/images/code-block-black.png" width="30"
+      /></a>
+    </div>
+
+    <div id="docs">
+        <a href="/smurfs/docs">
+            <i class="fas fa-book"></i>
+        </a>
+      </div>
+
+    <div id="container">
+
+        <div id="center">
+        <div id="speech">
+          <div id="insult-text"></div>
+        </div>
+        <div id="smurf">
+            <img src="images/smurf.webp" />
+        </div>
+      </div>
+    </div>
+    </div>
+    <script>
+      const url = "<?=SITE_DOMAIN?><?=SITE_FOLDER?>/api/insult";
+      const insultText = document.getElementById("insult-text");
+      // const insultButton = document.querySelectorAll("#insult button")[0];
+      // const loading = document.getElementById("loading");
+      const smurfImage = document.querySelectorAll("#smurf img")[0];
+
+      // insultButton.addEventListener("click", function () {
+    smurfImage.addEventListener("click", function () {
+        // loading.style.display = "block";
+        insultText.innerHTML = '<i class="fas fa-spinner fa-spin fa-lg"></i>';
+
+        const fetchPromise = fetch(url)
+          .then((response) => {
+            return response.json()
+          })
+          .then((data) => {
+            console.log(data);
+            insultText.innerHTML = data.insult;
+            // loading.style.display = "none";
+          });
+      });
+      
+      window.onload = () => {
+        smurfImage.click();   
+      }
+      
+    </script>
+  </body>
+</html>
